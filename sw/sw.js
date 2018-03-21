@@ -30,10 +30,23 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
+
+self.addEventListener('fetch', function (event) {
+  // TODO: respond to requests for the root page with
+  // the page skeleton from the cache
+  console.log(event.request.url)
+  var requestUrl = new URL(event.request.url);
+
+  if (requestUrl.origin === location.origin) {
+    if (requestUrl.pathname === '/') {
+      event.respondWith(caches.match('/restaurantsCache'));
+      return;
+    }
+  }
+
+  event.respondWith(caches.match(event.request)
+    .then(function (response) {
       return response || fetch(event.request);
-    })
-  );
+    }));
 });
+

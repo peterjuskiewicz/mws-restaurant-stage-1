@@ -35,9 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-footer {
-  width: 100%;
-}
+
 
 #maincontent {
   background-color: #f3f3f3;
@@ -211,7 +209,6 @@ nav h1 a {
 .inside #footer {
   bottom: 0;
   position: absolute;
-  width: 100%;
 }
 #restaurant-name {
   color: #f18200;
@@ -281,18 +278,38 @@ nav h1 a {
   color: #666;
 }
 
+
 /* ====================== Responsive website ====================== */
+
+
+@media (min-width: 474px) {
+
+footer {
+  width: 100%;
+}
+}
+
+@media (max-width: 550px) {
+
+.filter-options {
+  height: 150px;
+}
+.filter-options select {
+  width: 300px;
+}
+}
+
 
 @media (max-width: 800px) {
 
 #restaurants-list li {
-
   flex: 1 50%;
 }
 }
 
 
 @media (max-width:1023px) {
+
 #reviews-container, #restaurant-container, #breadcrumb {
   width: 100%;
 }
